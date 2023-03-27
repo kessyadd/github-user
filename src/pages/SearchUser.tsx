@@ -30,7 +30,9 @@ const SearchUser = () => {
   return (
     <>
       <Title level={2}>GitHub Repositories Explorer</Title>
-      <p>Please input username to start</p>
+      <p style={{ color: "rgba(0, 0, 0, 0.45)" }}>
+        Please input username to start
+      </p>
       <InputSearch />
       {state.fetchRepoStatus === "succeeded" && <CustomCollapse />}
       {state.fetchRepoStatus === "loading" && <Spin />}
