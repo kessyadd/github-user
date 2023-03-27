@@ -1,10 +1,10 @@
 # Github Repositories Explorer
 
-This is a simple Github Repositories Explorer built using React and Typescript. The application allows users to search for repositories on Github by entering a GitHub username. The search results display the repository name, description, language, and last update.
+This is a simple Github Repositories Explorer built using React and Typescript. The application allows users to search for GitHub user by entering a GitHub username. The search results display list of GitHub users along with their repositores.
 
 ## Getting Started
 
-To use the application, you will need to provide a Github personal access token. This can be done by creating a `.env` file in the root directory of the project and adding the following line:
+To use the application, you will need to provide a GitHub personal access token. This can be done by creating a `.env` file in the root directory of the project and adding the following line:
 
 ```
 REACT_APP_TOKEN=your_access_token_here
@@ -23,8 +23,8 @@ This will start the application on [http://localhost:3000](http://localhost:3000
 
 ## Features
 
-- Search for repositories on Github by entering a GitHub username
-- Display list of users along with their repositores
+- Search for GitHub user along with their repositories on Github by entering a GitHub username
+- Display list of GitHub users along with their repositores
 - Pagination support to display 5 search result per page
 
 ## Technology Used
