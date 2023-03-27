@@ -24,7 +24,7 @@ This will start the application on [http://localhost:3000](http://localhost:3000
 ## Features
 
 - Search for repositories on Github by entering a GitHub username
-- Display the repository name, description, description, language, and last update
+- Display list of users along with their repositores
 - Pagination support to display 5 search result per page
 
 ## Technology Used
