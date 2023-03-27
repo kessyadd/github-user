@@ -31,6 +31,7 @@ This will start the application on [http://localhost:3000](http://localhost:3000
 
 - React
 - Typescript
+- Redux Toolkit
 - Ant Design
 
 ## Live Demo
