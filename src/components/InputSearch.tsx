@@ -16,6 +16,10 @@ const InputSearch: React.FC = () => {
   const state = useSelector((state: RootState) => state.userSearchSlice);
   const userData = state.userList;
   const repoData = state.repositories;
+  const repoTemp: any = { ...repoData };
+  const userTemp: any = { ...userData };
+  const userVal = Object.values(userTemp);
+  const repoVal = Object.values(repoTemp);
   const [keyword, setKeyword] = useState("");
   const { Text } = Typography;
 
@@ -33,14 +37,9 @@ const InputSearch: React.FC = () => {
   };
 
   const setDataUser = () => {
-    const repoTemp: any = { ...repoData };
-    const userTemp: any = { ...userData };
-
-    if (Object.keys(repoTemp).length > 0 && Object.keys(userTemp).length > 0) {
-      const userKeys = Object.keys(userTemp);
-      const repoKeys = Object.keys(repoTemp);
-      for (let i = 1; i < userKeys.length; i++) {
-        for (let j = 0; j < repoKeys.length; j++) {
+    if (userVal.length > 0 && repoVal.length > 0) {
+      for (let i = 1; i < userVal.length; i++) {
+        for (let j = 0; j < repoVal.length; j++) {
           if (repoTemp[j].length > 1) {
             if (userTemp[i].login === repoTemp[j][1].login) {
               let newUser = { ...userTemp[i] };
@@ -68,13 +67,17 @@ const InputSearch: React.FC = () => {
         onSearch={onSearch}
         onChange={handleOnchange}
       />
-      {keyword && (
+      {userVal.length > 1 && (
         <Text
           strong
           type="secondary"
-          style={{ textAlign: "left", display: "block", marginBottom: "1rem" }}
+          style={{
+            textAlign: "left",
+            display: "block",
+            marginBottom: "1rem",
+          }}
         >
-          Showing {state.userList.length - 1} user(s) for {keyword}
+          Showing {userVal.length - 1} user(s) for {keyword}
         </Text>
       )}
     </>

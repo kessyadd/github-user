@@ -1,5 +1,5 @@
 import React from "react";
-import { CaretRightOutlined } from "@ant-design/icons";
+import { CaretRightOutlined, CloseCircleOutlined } from "@ant-design/icons";
 import {
   Avatar,
   Badge,
@@ -106,7 +106,13 @@ const CustomCollapse = () => {
             </Collapse>
           ))
       ) : (
-        <p>There are no user found</p>
+        <p style={{ color: "rgba(0, 0, 0, 0.45)" }}>
+          <CloseCircleOutlined
+            className="site-result-demo-error-icon"
+            style={{ color: "red", marginRight: "5px" }}
+          />
+          There are no user found, please try another username
+        </p>
       )}
     </>
   );
