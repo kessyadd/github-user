@@ -1,6 +1,6 @@
 # Github Repositories Explorer
 
-This is a simple Github Repositories Explorer built using React and Typescript. The application allows users to search for repositories on Github by entering a query term. The search results display the repository name, description, language, and last update.
+This is a simple Github Repositories Explorer built using React and Typescript. The application allows users to search for repositories on Github by entering a GitHub username. The search results display the repository name, description, language, and last update.
 
 ## Getting Started
 
@@ -23,7 +23,7 @@ This will start the application on [http://localhost:3000](http://localhost:3000
 
 ## Features
 
-- Search for repositories on Github by entering a query term
+- Search for repositories on Github by entering a GitHub username
 - Display the repository name, description, description, language, and last update
 - Pagination support to display 5 search result per page
 

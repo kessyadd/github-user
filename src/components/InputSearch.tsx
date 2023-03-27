@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Input, Typography } from "antd";
+import { Alert, Input, Typography } from "antd";
 import {
   fetchUserList,
   resetState,
@@ -16,6 +16,7 @@ const InputSearch: React.FC = () => {
   const state = useSelector((state: RootState) => state.userSearchSlice);
   const userData = state.userList;
   const repoData = state.repositories;
+  const [alert, setAlert] = useState(false);
   const repoTemp: any = { ...repoData };
   const userTemp: any = { ...userData };
   const userVal = Object.values(userTemp);
@@ -24,9 +25,14 @@ const InputSearch: React.FC = () => {
   const { Text } = Typography;
 
   const onSearch = (value: string) => {
-    const string = value.split(" ").join("").toLowerCase();
-    dispatch(fetchUserList(string));
-    setKeyword(string);
+    if (value === "") {
+      setAlert(true);
+    } else {
+      const string = value.split(" ").join("").toLowerCase();
+      dispatch(fetchUserList(string));
+      setKeyword(string);
+      setAlert(false);
+    }
   };
 
   const handleOnchange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -53,6 +59,10 @@ const InputSearch: React.FC = () => {
     }
   };
 
+  const handleHideAlert = () => {
+    setAlert(false);
+  };
+
   useEffect(() => {
     setDataUser();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -60,6 +70,14 @@ const InputSearch: React.FC = () => {
 
   return (
     <>
+      {alert && (
+        <Alert
+          message="Pelase input username"
+          type="error"
+          closable
+          onClose={handleHideAlert}
+        />
+      )}
       <Search
         placeholder="input GitHub username"
         enterButton="Search"
@@ -68,15 +86,7 @@ const InputSearch: React.FC = () => {
         onChange={handleOnchange}
       />
       {userVal.length > 1 && (
-        <Text
-          strong
-          type="secondary"
-          style={{
-            textAlign: "left",
-            display: "block",
-            marginBottom: "1rem",
-          }}
-        >
+        <Text strong type="secondary" className="result-text">
           Showing {userVal.length - 1} user(s) for {keyword}
         </Text>
       )}
