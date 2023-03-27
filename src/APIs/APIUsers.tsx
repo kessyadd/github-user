@@ -4,8 +4,6 @@ const APIUsers = {
   getUserList: async (userName: string) => {
     const result = await octokit.request("GET /search/users", {
       q: userName,
-      // per_page: 5,
-      // page: 1,
     });
     return result.data;
   },

@@ -42,12 +42,13 @@ const CustomCollapse = () => {
 
   const state = useSelector((state: RootState) => state.userSearchSlice);
   const userData: User[] = { ...state.data };
+  const repoData = { ...state.repositories };
   const page = state.page;
   let start = page * 5 - 5;
   let end = page * 5;
   return (
     <>
-      {Object.entries(userData).length > 0 ? (
+      {Object.entries(repoData).length > 0 ? (
         Object.entries(userData)
           .slice(1)
           .slice(start, end)
@@ -105,7 +106,7 @@ const CustomCollapse = () => {
             </Collapse>
           ))
       ) : (
-        <p></p>
+        <p>There are no user found</p>
       )}
     </>
   );

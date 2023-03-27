@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Input, Typography } from "antd";
-import { fetchUserList, setData } from "../store/features/userSearchSlice";
+import {
+  fetchUserList,
+  resetState,
+  setData,
+} from "../store/features/userSearchSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../store";
 import "./css/inputSearch.css";
@@ -19,6 +23,13 @@ const InputSearch: React.FC = () => {
     const string = value.split(" ").join("").toLowerCase();
     dispatch(fetchUserList(string));
     setKeyword(string);
+  };
+
+  const handleOnchange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.value === "") {
+      dispatch(resetState());
+      setKeyword("");
+    }
   };
 
   const setDataUser = () => {
@@ -55,6 +66,7 @@ const InputSearch: React.FC = () => {
         enterButton="Search"
         size="large"
         onSearch={onSearch}
+        onChange={handleOnchange}
       />
       {keyword && (
         <Text
@@ -62,7 +74,7 @@ const InputSearch: React.FC = () => {
           type="secondary"
           style={{ textAlign: "left", display: "block", marginBottom: "1rem" }}
         >
-          Showing users for {keyword}
+          Showing {state.userList.length - 1} user(s) for {keyword}
         </Text>
       )}
     </>

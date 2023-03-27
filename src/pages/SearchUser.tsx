@@ -1,4 +1,4 @@
-import { Typography } from "antd";
+import { Spin, Typography } from "antd";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import CustomCollapse from "../components/CustomCollapse";
@@ -16,6 +16,7 @@ const SearchUser = () => {
   const { Title } = Typography;
 
   useEffect(() => {
+    document.title = "GitHub Repositories Explorer";
     if (state.fetchUserStatus === "succeeded") {
       if (state.repositories.length > 0) dispatch(resetRepositories());
       state.userList.forEach((elements) => {
@@ -31,7 +32,8 @@ const SearchUser = () => {
       <Title level={2}>GitHub Repositories Explorer</Title>
       <p>Please input username to start</p>
       <InputSearch />
-      <CustomCollapse />
+      {state.fetchRepoStatus === "succeeded" && <CustomCollapse />}
+      {state.fetchRepoStatus === "loading" && <Spin />}
       <Pages />
     </>
   );
