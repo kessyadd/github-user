@@ -33,8 +33,13 @@ const CustomLayout: React.FC<Props> = ({ children }) => (
         </div>
       </Header>
       <Content style={contentStyle}>
-        <Row gutter={{ sm: 16, md: 24 }}>
-          <Col span={12} offset={6}>
+        <Row>
+          <Col
+            xs={{ span: 20, offset: 2 }}
+            md={{ span: 16, offset: 4 }}
+            lg={{ span: 12, offset: 6 }}
+            xl={{ span: 8, offset: 8 }}
+          >
             {children}
           </Col>
         </Row>

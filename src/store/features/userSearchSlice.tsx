@@ -97,6 +97,9 @@ const userSearchSlice = createSlice({
     setPage: (state, action: PayloadAction<number>) => {
       state.page = action.payload;
     },
+    resetState: (state) => {
+      Object.assign(state, initialState);
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchUserList.pending, (state) => {
@@ -136,5 +139,6 @@ const userSearchSlice = createSlice({
   },
 });
 
-export const { resetRepositories, setData, setPage } = userSearchSlice.actions;
+export const { resetRepositories, setData, setPage, resetState } =
+  userSearchSlice.actions;
 export default userSearchSlice.reducer;
