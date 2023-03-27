@@ -1,3 +1,13 @@
 .ant-btn-primary {
   background-color: #2da44e;
 }
+
+.ant-alert {
+  margin-bottom: 10px;
+}
+
+.result-text {
+  text-align: left;
+  display: block;
+  margin-bottom: 1rem;
+}
